@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Ajax form submit Flask</title>
+</head>
+<body>
+    <h1>Submit something</h1>
+    <form method='POST', id='postForm'>
+        <input type='text' id='size' name='ipt_value'>
+        <input id='butn', type='submit'>
+    </form>
+    <!-- <input id='btn', type='submit'> -->
+    <div id='changeit'></div>
+
+<script>
+
+
+document.getElementById('postForm').addEventListener('submit', sendForm);
+
+
+function sendForm(e){
+
+    e.preventDefault();
+
+    var name = document.getElementById('size').value;
+    var params = {name:name}
+
+
+    var xhr = new XMLHttpRequest();
+
+    xhr.open('post', '../user_input', true);
+    xhr.setRequestHeader('Content-type', 'application/json'); 
+    // xhr.setRequestHeader('Content-type', 'x-www-form-urlencoded');
+    xhr.onload = function(){
+        console.log('Finally');
+    }
+    xhr.send(JSON.stringify(params));
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// $(document).ready(function(){
+
+// $('#postForm').on('submit',function (e) {
+
+//      $.ajax({
+//       type: 'post',
+//       url: '/user_input',
+//       dataType:'json',
+//        success: function (q) {
+//        document.getElementById("changeit").innerHTML= q;
+//        console.log('here')
+//        }
+//       });
+//      e.preventDefault();
+//      });
+// });
+</script>
+
+</body>
+</html>
